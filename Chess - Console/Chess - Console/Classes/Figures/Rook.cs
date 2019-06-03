@@ -1,11 +1,11 @@
-﻿using Chess___Console.Classes.Static_Classes;
+﻿using Chess___Console.Classes.Misc;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Chess___Console.Classes.Figures
 {
-    class Rook : IFigure
+    public class Rook : IFigure
     {
         public Rook(Position position,bool isWhite)
         {

@@ -1,0 +1,13 @@
+﻿{
+  "TopLeftCorner": "╔",
+  "TopRightCorner": "╗",
+  "BottomRightCorver": "╝",
+  "BottomLeftCorver": "╚",
+  "VerticalSideWithoutLine": "║",
+  "VerticalSideWithLineTotheRight": "╠",
+  "VerticalSideWithLineToTheLeft": "╣",
+  "Cross": "╬",
+  "HorizontalSideWithLineToTheTop": "╩",
+  "HorizontalSideWithLineToTheBottom": "╦",
+  "HorizontalSideWithoutLine": "═"
+}

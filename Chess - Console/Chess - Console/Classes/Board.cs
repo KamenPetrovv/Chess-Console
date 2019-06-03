@@ -1,6 +1,9 @@
 ﻿using Chess___Console.Classes.Figures;
+using Chess___Console.Classes.Misc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Chess___Console.Classes
@@ -10,11 +13,21 @@ namespace Chess___Console.Classes
         public Board()
         {
             this.grid = new GridTile[8][];
+            this.borderSymbols = GenerateBoarderSymbols();
 
             populateGridWithTiles();
             populateGridWithFigures();
         }
 
+        private BorderSymbols GenerateBoarderSymbols()
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            BorderSymbols BorderSymbols = serializer.Deserialize<BorderSymbols>(new JsonTextReader(File.OpenText(@"..\..\..\Classes\Misc\BoardSymbols.json")));
+
+            return BorderSymbols;
+        }
+
+        private BorderSymbols borderSymbols { get; set; }
         private void populateGridWithFigures()
         {
             IFigure leftWhiteRook = new Rook(new Position(0, 0), true);
@@ -96,22 +109,105 @@ namespace Chess___Console.Classes
 
         public void Draw()
         {
+            string emptyTileSymbol = " ";
+
+            Console.WriteLine(GenerateTopBorder());
+
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
+                    if (j == 0)
+                    {
+                        Console.Write(borderSymbols.VerticalSideWithoutLine);
+                    }
+
                     if (grid[i][j].Figure == null)
                     {
-                        Console.Write("X ");
+                        Console.Write(" "+ emptyTileSymbol +" ");
                     }
                     else
                     {
-                        Console.Write(grid[i][j].Figure.Symbol + " ");
+                        Console.Write(" " + grid[i][j].Figure.Symbol + " ");
                     }
-                    
+
+                    if (j < 7)
+                    {
+                        Console.Write(borderSymbols.VerticalSideWithoutLine);
+                    }
+
+                    if (j == 7)
+                    {
+                        Console.WriteLine(borderSymbols.VerticalSideWithoutLine);
+                    }
                 }
-                Console.WriteLine();
+
+                if (i < 7)
+                {
+                    Console.WriteLine(GenerateMiddleCrossLine());
+                }
             }
+
+            Console.WriteLine(GenerateBottomBorder());
+        }
+
+        private string GenerateMiddleBorder()
+        {
+            return (char)218 + new String((char)196, 6) + (char)191;
+        }
+
+        private string GenerateTopBorder()
+        {
+            string topBorder = "";
+
+            topBorder += borderSymbols.TopLeftCorner;
+
+            for (int i = 0; i < 7; i++)
+            {
+                topBorder += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+                topBorder += borderSymbols.HorizontalSideWithLineToTheBottom;
+            }
+
+            topBorder += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+            topBorder += borderSymbols.TopRightCorner;
+
+            return topBorder;
+        }
+
+        private string GenerateBottomBorder()
+        {
+            string bottomBorder = "";
+
+            bottomBorder += borderSymbols.BottomLeftCorver;
+
+            for (int i = 0; i < 7; i++)
+            {
+                bottomBorder += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+                bottomBorder += borderSymbols.HorizontalSideWithLineToTheTop;
+            }
+
+            bottomBorder += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+            bottomBorder += borderSymbols.BottomRightCorver;
+
+            return bottomBorder;
+        }
+
+        private string GenerateMiddleCrossLine()
+        {
+            string midLine = "";
+
+            midLine += borderSymbols.VerticalSideWithLineTotheRight;
+
+            for (int i = 0; i < 7; i++)
+            {
+                midLine += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+                midLine += borderSymbols.Cross;
+            }
+
+            midLine += repeatString(borderSymbols.HorizontalSideWithoutLine, 3);
+            midLine += borderSymbols.VerticalSideWithLineToTheLeft;
+
+            return midLine;
         }
 
         private void populateGridWithTiles()
@@ -150,6 +246,18 @@ namespace Chess___Console.Classes
                     }
                 }
             }
+        }
+
+        private string repeatString(string str, int numberOfRepeats)
+        {
+            string generatedString = "";
+
+            for (int i = 0; i < numberOfRepeats; i++)
+            {
+                generatedString += str;
+            }
+
+            return generatedString;
         }
     }
 }

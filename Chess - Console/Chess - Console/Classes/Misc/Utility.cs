@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chess___Console.Classes.Static_Classes
+namespace Chess___Console.Classes.Misc
 {
     public static class Utility
     {

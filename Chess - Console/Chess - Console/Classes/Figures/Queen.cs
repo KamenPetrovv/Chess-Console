@@ -1,4 +1,4 @@
-﻿using Chess___Console.Classes.Static_Classes;
+﻿using Chess___Console.Classes.Misc;
 using System;
 using System.Collections.Generic;
 using System.Text;

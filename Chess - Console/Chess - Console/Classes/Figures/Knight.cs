@@ -1,11 +1,11 @@
-﻿using Chess___Console.Classes.Static_Classes;
+﻿using Chess___Console.Classes.Misc;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Chess___Console.Classes.Figures
 {
-    class Knight : IFigure
+    public class Knight : IFigure
     {
         public Knight(Position position, bool isWhite)
         {
@@ -20,7 +20,7 @@ namespace Chess___Console.Classes.Figures
         }
         public Position Position { get; set; }
 
-        public string Symbol { get { return "Kn"; } }
+        public string Symbol { get { return "N"; } }
 
         public List<Position> PossibleMoves { get; private set; }
 

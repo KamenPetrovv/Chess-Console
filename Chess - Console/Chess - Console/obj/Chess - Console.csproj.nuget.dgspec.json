@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj": {}
+    "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess-Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj": {}
   },
   "projects": {
-    "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj": {
+    "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess-Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj",
+        "projectUniqueName": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess-Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj",
         "projectName": "Chess - Console",
-        "projectPath": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj",
+        "projectPath": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess-Console\\Chess - Console\\Chess - Console\\Chess - Console.csproj",
         "packagesPath": "C:\\Users\\kamen.petrov\\.nuget\\packages\\",
-        "outputPath": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess - Console\\Chess - Console\\obj\\",
+        "outputPath": "D:\\FMI\\Mobile Applications\\Chess - Console\\Chess-Console\\Chess - Console\\Chess - Console\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\ProgramData\\Xamarin\\NuGet\\",
@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[2.2.0, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
             }
           },
           "imports": [

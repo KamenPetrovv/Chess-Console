@@ -9,3 +9,14 @@ D:\FMI\Mobile Applications\Chess - Console\Chess - Console\Chess - Console\obj\D
 D:\FMI\Mobile Applications\Chess - Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.AssemblyInfo.cs
 D:\FMI\Mobile Applications\Chess - Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.dll
 D:\FMI\Mobile Applications\Chess - Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.pdb
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.2\Chess - Console.deps.json
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.2\Chess - Console.runtimeconfig.json
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.2\Chess - Console.runtimeconfig.dev.json
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.2\Chess - Console.dll
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.2\Chess - Console.pdb
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.csprojAssemblyReference.cache
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.csproj.CoreCompileInputs.cache
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.AssemblyInfoInputs.cache
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.AssemblyInfo.cs
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.dll
+D:\FMI\Mobile Applications\Chess - Console\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.2\Chess - Console.pdb

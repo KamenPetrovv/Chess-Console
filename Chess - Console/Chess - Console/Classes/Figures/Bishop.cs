@@ -1,11 +1,11 @@
-﻿using Chess___Console.Classes.Static_Classes;
+﻿using Chess___Console.Classes.Misc;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Chess___Console.Classes.Figures
 {
-    class Bishop : IFigure
+    public class Bishop : IFigure
     {
         public Bishop(Position position, bool isWhite)
         {
@@ -14,7 +14,7 @@ namespace Chess___Console.Classes.Figures
             this.DefaultMoves = new List<Direction>();
             this.IsAlive = true;
             this.IsWhite = isWhite;
-
+           
             //Populate the Default Moves of the Figure
             DefaultMoves.AddRange(Utility.GenerateDiagonalDirections());
         }

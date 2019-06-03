@@ -1,11 +1,12 @@
-﻿using Chess___Console.Classes.Static_Classes;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Chess___Console.Classes.Misc;
 
 namespace Chess___Console.Classes.Figures
 {
-    class King : IFigure
+    public class King : IFigure
     {
         public King(Position position, bool isWhite)
         {
@@ -24,7 +25,7 @@ namespace Chess___Console.Classes.Figures
 
         public List<Direction> DefaultMoves { get; private set; }
 
-        public string Symbol { get { return "Ki"; } }
+        public string Symbol { get { return "K"; } }
 
         public bool IsAlive { get; private set; }
 
