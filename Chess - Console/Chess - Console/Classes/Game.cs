@@ -12,9 +12,15 @@ namespace Chess___Console.Classes
         {
             while (!isGameOver())
             {
+                Board.UpdateFigures();
+
                 Move whiteMove = Board.GetMoveFromConsole(true);
 
-                //Board.isMovePossible()
+                if (Board.isMovePossible(whiteMove))
+                {
+                    Board.ExecuteMove(move);
+                }
+                
             }
         }
 

@@ -125,11 +125,28 @@ namespace Chess___Console.Classes
         {
             IFigure figure = grid[move.FromPosition.X][move.FromPosition.Y].Figure;
 
-            //if (figure.PossibleMoves.Contains())
-            //{
+            if (FigureContainsPossibleMove(figure,move))
+            {
+                return true;
+            }
 
-            //}
-            return true;
+            return false;
+        }
+
+        private bool FigureContainsPossibleMove(IFigure figure, Move move)
+        {
+            for (int i = 0; i < figure.PossibleMoves.Count ;i ++)
+            {
+                bool xIsTheSame = figure.PossibleMoves[i].X == move.ToPosition.X;
+                bool yIsTheSame = figure.PossibleMoves[i].Y == move.ToPosition.Y;
+
+                if (xIsTheSame && yIsTheSame)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         public void Draw()
