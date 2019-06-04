@@ -15,8 +15,15 @@ namespace Chess___Console
     {
         static void Main(string[] args)
         {
-            
+            List<Position> asd = new List<Position>() { new Position(2, 2) };
+
+            Position q = new Position(2, 2);
+
+            Console.WriteLine(asd.Contains(q));
+
             Board b = new Board();
+
+            Move wMove = b.GetMoveFromConsole(false);
 
             b.Draw();
         }

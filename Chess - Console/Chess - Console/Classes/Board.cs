@@ -27,6 +27,25 @@ namespace Chess___Console.Classes
             return BorderSymbols;
         }
 
+        public bool ContainsFigure(string figureSymbol, bool isWhite)
+        {
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    bool symbolMatches = grid[i][j].Figure.Symbol == figureSymbol;
+                    bool colorMatches = grid[i][j].Figure.IsWhite == isWhite;
+
+                    if (symbolMatches && colorMatches)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private BorderSymbols borderSymbols { get; set; }
         private void populateGridWithFigures()
         {
@@ -102,8 +121,14 @@ namespace Chess___Console.Classes
 
         }
 
-        public bool isMovePossible(IFigure figure, Position position)
+        public bool isMovePossible(Move move)
         {
+            IFigure figure = grid[move.FromPosition.X][move.FromPosition.Y].Figure;
+
+            //if (figure.PossibleMoves.Contains())
+            //{
+
+            //}
             return true;
         }
 
@@ -124,7 +149,7 @@ namespace Chess___Console.Classes
 
                     if (grid[i][j].Figure == null)
                     {
-                        Console.Write(" "+ emptyTileSymbol +" ");
+                        Console.Write(" " + emptyTileSymbol + " ");
                     }
                     else
                     {
@@ -246,6 +271,23 @@ namespace Chess___Console.Classes
                     }
                 }
             }
+        }
+
+        public Move GetMoveFromConsole(bool isWhitesMove)
+        {
+            Console.Write("{0} move from: ", isWhitesMove ? "Whites" : "Blacks");
+
+            Move move = new Move();
+
+            move.ParseFrom(Console.ReadLine());
+            Console.WriteLine();
+
+            Console.Write("To: ");
+
+            move.ParseTo(Console.ReadLine());
+            Console.WriteLine();
+
+            return move;
         }
 
         private string repeatString(string str, int numberOfRepeats)
