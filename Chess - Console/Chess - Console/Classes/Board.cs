@@ -27,14 +27,32 @@ namespace Chess___Console.Classes
             return BorderSymbols;
         }
 
+        public void ExecuteMove(Move move)
+        {
+            GridTile fromGridTile = grid[move.FromPosition.X][move.FromPosition.Y];
+            GridTile toGridTile = grid[move.ToPosition.X][move.ToPosition.Y];
+
+            IFigure figure = grid[move.ToPosition.X][move.ToPosition.Y].Figure;
+
+            if (figure != null)
+            {
+                figure.Kill();
+                this.killedFigures.Add(figure);
+                toGridTile = null;
+            }
+
+            toGridTile.Figure = fromGridTile.Figure;
+            fromGridTile.Figure = null;
+        }
+
         public bool ContainsFigure(string figureSymbol, bool isWhite)
         {
             for (int i = 0; i < 8; i++)
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    bool symbolMatches = grid[i][j].Figure.Symbol == figureSymbol;
-                    bool colorMatches = grid[i][j].Figure.IsWhite == isWhite;
+                    bool symbolMatches = grid[i][j].Figure != null ? grid[i][j].Figure.Symbol == figureSymbol : false;
+                    bool colorMatches = grid[i][j].Figure != null ? grid[i][j].Figure.IsWhite == isWhite : false;
 
                     if (symbolMatches && colorMatches)
                     {
@@ -74,28 +92,28 @@ namespace Chess___Console.Classes
             grid[0][4].Figure = WhiteKing;
 
 
-            IFigure leftBlackRook = new Rook(new Position(7, 0), true);
+            IFigure leftBlackRook = new Rook(new Position(7, 0), false);
             grid[7][0].Figure = leftBlackRook;
 
-            IFigure rightBlackRook = new Rook(new Position(7, 7), true);
+            IFigure rightBlackRook = new Rook(new Position(7, 7), false);
             grid[7][7].Figure = rightBlackRook;
 
-            IFigure leftBlackKnight = new Knight(new Position(7, 1), true);
+            IFigure leftBlackKnight = new Knight(new Position(7, 1), false);
             grid[7][1].Figure = leftBlackKnight;
 
-            IFigure rightBlackKnight = new Knight(new Position(7, 6), true);
+            IFigure rightBlackKnight = new Knight(new Position(7, 6), false);
             grid[7][6].Figure = leftBlackKnight;
 
-            IFigure leftBlackBishop = new Bishop(new Position(7, 2), true);
+            IFigure leftBlackBishop = new Bishop(new Position(7, 2), false);
             grid[7][2].Figure = leftBlackBishop;
 
-            IFigure rightBlackBishop = new Bishop(new Position(7, 5), true);
+            IFigure rightBlackBishop = new Bishop(new Position(7, 5), false);
             grid[7][5].Figure = rightBlackBishop;
 
-            IFigure blackQueen = new Queen(new Position(7, 3), true);
+            IFigure blackQueen = new Queen(new Position(7, 3), false);
             grid[7][3].Figure = blackQueen;
 
-            IFigure blackKing = new King(new Position(7, 4), true);
+            IFigure blackKing = new King(new Position(7, 4), false);
             grid[7][4].Figure = blackKing;
 
             IFigure pawn;
@@ -114,6 +132,8 @@ namespace Chess___Console.Classes
 
         }
 
+        private List<IFigure> killedFigures { get; set; }
+
         private GridTile[][] grid;
 
         public void UpdateFigures()
@@ -125,7 +145,7 @@ namespace Chess___Console.Classes
         {
             IFigure figure = grid[move.FromPosition.X][move.FromPosition.Y].Figure;
 
-            if (FigureContainsPossibleMove(figure,move))
+            if (FigureContainsPossibleMove(figure, move))
             {
                 return true;
             }
@@ -135,7 +155,7 @@ namespace Chess___Console.Classes
 
         private bool FigureContainsPossibleMove(IFigure figure, Move move)
         {
-            for (int i = 0; i < figure.PossibleMoves.Count ;i ++)
+            for (int i = 0; i < figure.PossibleMoves.Count; i++)
             {
                 bool xIsTheSame = figure.PossibleMoves[i].X == move.ToPosition.X;
                 bool yIsTheSame = figure.PossibleMoves[i].Y == move.ToPosition.Y;
@@ -151,6 +171,8 @@ namespace Chess___Console.Classes
 
         public void Draw()
         {
+            Console.Clear();
+
             string emptyTileSymbol = " ";
 
             Console.WriteLine(GenerateTopBorder());

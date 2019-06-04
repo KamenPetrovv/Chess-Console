@@ -6,6 +6,11 @@ namespace Chess___Console.Classes
 {
     public class Game
     {
+        public Game()
+        {
+            this.Board = new Board();
+        }
+
         public Board Board { get; private set; }
 
         public void Start()
@@ -14,13 +19,23 @@ namespace Chess___Console.Classes
             {
                 Board.UpdateFigures();
 
+                Board.Draw();
+
                 Move whiteMove = Board.GetMoveFromConsole(true);
 
                 if (Board.isMovePossible(whiteMove))
                 {
-                    Board.ExecuteMove(move);
+                    Board.ExecuteMove(whiteMove);
                 }
-                
+
+                Board.Draw();
+
+                Move blackMove = Board.GetMoveFromConsole(false);
+
+                if (Board.isMovePossible(blackMove))
+                {
+                    Board.ExecuteMove(blackMove);
+                }
             }
         }
 
