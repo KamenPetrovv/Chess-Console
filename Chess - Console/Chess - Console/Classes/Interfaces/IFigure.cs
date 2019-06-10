@@ -12,7 +12,7 @@ namespace Chess___Console.Classes
 
         List<Direction> DefaultMoves { get; }
 
-        void CalculatePossibleMoves();
+        void CalculatePossibleMoves(Board board);
 
         bool IsAlive { get;  }
 

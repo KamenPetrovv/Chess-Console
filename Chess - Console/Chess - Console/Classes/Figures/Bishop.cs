@@ -5,39 +5,25 @@ using System.Text;
 
 namespace Chess___Console.Classes.Figures
 {
-    public class Bishop : IFigure
+    public class Bishop : Figure
     {
         public Bishop(Position position, bool isWhite)
+            : base(position, isWhite)
         {
-            this.Position = position;
-            this.PossibleMoves = new List<Position>();
-            this.DefaultMoves = new List<Direction>();
-            this.IsAlive = true;
-            this.IsWhite = isWhite;
-           
             //Populate the Default Moves of the Figure
             DefaultMoves.AddRange(Utility.GenerateDiagonalDirections());
         }
-        public Position Position { get; set; }
 
-        public List<Position> PossibleMoves { get; private set; }
+        public override string Symbol { get { return "B"; } }
 
-        public List<Direction> DefaultMoves { get; private set; }
-
-        public bool IsAlive { get; private set; }
-
-        public bool IsWhite { get; private set; }
-
-        public string Symbol { get { return "B"; } }
-
-        public void CalculatePossibleMoves()
+        public override void CalculatePossibleMoves(Board board)
         {
-            throw new NotImplementedException();
+            List<Position> possibleMoves = new List<Position>();
+
+            possibleMoves = this.AddDefaultMovesToCurrentPosition();
+
+            //TODO
         }
 
-        public void Kill()
-        {
-            this.IsAlive = false;
-        }
     }
 }
