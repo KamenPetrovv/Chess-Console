@@ -1,0 +1,11 @@
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.csprojAssemblyReference.cache
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.csproj.CoreCompileInputs.cache
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.AssemblyInfoInputs.cache
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.AssemblyInfo.cs
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.1\Chess - Console.deps.json
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.1\Chess - Console.runtimeconfig.json
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.1\Chess - Console.runtimeconfig.dev.json
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.1\Chess - Console.dll
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\bin\Debug\netcoreapp2.1\Chess - Console.pdb
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.dll
+D:\Programming\Exercises\SoftUni\Chess-Console\Chess - Console\Chess - Console\obj\Debug\netcoreapp2.1\Chess - Console.pdb

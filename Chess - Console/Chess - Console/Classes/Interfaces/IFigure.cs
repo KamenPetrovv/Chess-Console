@@ -14,6 +14,8 @@ namespace Chess___Console.Classes
 
         void CalculatePossibleMoves(Board board);
 
+        bool ContainsPossibleMove(Move move);
+
         bool IsAlive { get;  }
 
         bool IsWhite { get; }

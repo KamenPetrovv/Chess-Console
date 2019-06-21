@@ -15,6 +15,9 @@ namespace Chess___Console
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
+
             Game game = new Game();
 
             game.Start();

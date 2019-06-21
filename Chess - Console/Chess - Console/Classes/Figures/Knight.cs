@@ -18,7 +18,14 @@ namespace Chess___Console.Classes.Figures
 
         public override void CalculatePossibleMoves(Board board)
         {
-            throw new NotImplementedException();
+            List<Position> possibleMoves = new List<Position>();
+
+            //Calculate where the figure can move as if there are no other figures on the board
+            possibleMoves = this.AddDefaultMovesToCurrentPosition();
+
+            //Filter these possible moves accordingly to the other figures
+
+            this.AddPossibleMoves(possibleMoves, board);
         }
     }
 }

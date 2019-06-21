@@ -23,19 +23,41 @@ namespace Chess___Console.Classes
 
                 Move whiteMove = Board.GetMoveFromConsole(true);
 
-                if (Board.isMovePossible(whiteMove))
+                while (!Board.isMovePossible(whiteMove))
                 {
-                    Board.ExecuteMove(whiteMove);
+                    Board.Draw();
+                    Console.WriteLine("Move wasn't possible. Try again");
+                    whiteMove = Board.GetMoveFromConsole(true);
                 }
+
+                Board.ExecuteMove(whiteMove);
+
+                Board.UpdateFigures();
 
                 Board.Draw();
 
                 Move blackMove = Board.GetMoveFromConsole(false);
 
-                if (Board.isMovePossible(blackMove))
+                while (!Board.isMovePossible(blackMove))
                 {
-                    Board.ExecuteMove(blackMove);
+                    Board.Draw();
+                    Console.WriteLine("Move wasn't possible. Try again");
+                    blackMove = Board.GetMoveFromConsole(false);
                 }
+
+                Board.ExecuteMove(blackMove);
+            }
+            Console.WriteLine("Game is over!");
+            bool whiteKingIsAlive = this.Board.ContainsFigure("K", true);
+            bool blackKingIsAlive = this.Board.ContainsFigure("K", false);
+
+            if (!whiteKingIsAlive)
+            {
+                Console.WriteLine("Blacks win!");
+            }
+            if (!blackKingIsAlive)
+            {
+                Console.WriteLine("Whites win!");
             }
         }
 

@@ -78,5 +78,60 @@ namespace Chess___Console.Classes.Figures
 
             this.Position = position;
         }
+
+        //Used for coupled moves. A direction of moves. If there is an obstacle(figure) on the first move there is no point checking the rest of the moves
+        protected void TrimAndAddPossibleMoves(IEnumerable<Position> possibleMoves, Board board)
+        {
+            foreach (Position possibleMove in possibleMoves)
+            {
+                IFigure figure = board.GetFigureOnPosition(possibleMove);
+
+                if (figure != null)
+                {
+                    //Friendly figure
+                    if (this.IsWhite && figure.IsWhite || (this.IsWhite = false && figure.IsWhite == false))
+                    {
+                        //No reason to check any further so we break
+                        break;
+                    }
+                    //Enemy figure
+                    else 
+                    {
+                        this.PossibleMoves.Add(possibleMove);
+
+                        //No reason to check any further so we break
+                        break;
+                    }
+                }
+                //Empty spot
+                else
+                {
+                    this.PossibleMoves.Add(possibleMove);
+                }
+            }
+        }
+
+        //Used for decoupled moves like a Pawn or King or Knight
+        protected void AddPossibleMoves(IEnumerable<Position> possibleMoves, Board board)
+        {
+            foreach (Position possibleMove in possibleMoves)
+            {
+                IFigure figure = board.GetFigureOnPosition(possibleMove);
+
+                if (figure != null)
+                {
+                    //Enemy figure
+                    if (this.IsWhite && figure.IsWhite == false || (this.IsWhite == false && figure.IsWhite))
+                    {
+                        this.PossibleMoves.Add(possibleMove);
+                    }
+                }
+                //Empty spot
+                else
+                {
+                    this.PossibleMoves.Add(possibleMove);
+                }
+            }
+        }
     }
 }

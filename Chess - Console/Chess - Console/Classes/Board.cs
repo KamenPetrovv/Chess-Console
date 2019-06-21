@@ -14,7 +14,7 @@ namespace Chess___Console.Classes
         {
             this.grid = new GridTile[8][];
             this.borderSymbols = GenerateBoarderSymbols();
-
+            this.killedFigures = new List<IFigure>();
             populateGridWithTiles();
             populateGridWithFigures();
         }
@@ -38,10 +38,14 @@ namespace Chess___Console.Classes
             {
                 figure.Kill();
                 this.killedFigures.Add(figure);
-                toGridTile = null;
+                toGridTile.Figure = null;
             }
 
             toGridTile.Figure = fromGridTile.Figure;
+
+            toGridTile.Figure.Position.X = move.ToPosition.X;
+            toGridTile.Figure.Position.Y = move.ToPosition.Y;
+
             fromGridTile.Figure = null;
         }
 
@@ -65,68 +69,71 @@ namespace Chess___Console.Classes
         }
 
         private BorderSymbols borderSymbols { get; set; }
+
         private void populateGridWithFigures()
         {
-            IFigure leftWhiteRook = new Rook(new Position(0, 0), true);
-            grid[0][0].Figure = leftWhiteRook;
+            IFigure leftWhiteRook = new Rook(new Position(7, 0), true);
+            grid[7][0].Figure = leftWhiteRook;
 
-            IFigure rightWhiteRook = new Rook(new Position(0, 7), true);
-            grid[0][7].Figure = rightWhiteRook;
+            IFigure rightWhiteRook = new Rook(new Position(7, 7), true);
+            grid[7][7].Figure = rightWhiteRook;
 
-            IFigure leftWhiteKnight = new Knight(new Position(0, 1), true);
-            grid[0][1].Figure = leftWhiteKnight;
+            IFigure leftWhiteKnight = new Knight(new Position(7, 1), true);
+            grid[7][1].Figure = leftWhiteKnight;
 
-            IFigure rightWhiteKnight = new Knight(new Position(0, 6), true);
-            grid[0][6].Figure = rightWhiteKnight;
+            IFigure rightWhiteKnight = new Knight(new Position(7, 6), true);
+            grid[7][6].Figure = rightWhiteKnight;
 
-            IFigure leftWhiteBishop = new Bishop(new Position(0, 2), true);
-            grid[0][2].Figure = leftWhiteBishop;
+            IFigure leftWhiteBishop = new Bishop(new Position(7, 2), true);
+            grid[7][2].Figure = leftWhiteBishop;
 
-            IFigure rightWhiteBishop = new Bishop(new Position(0, 5), true);
-            grid[0][5].Figure = rightWhiteBishop;
+            IFigure rightWhiteBishop = new Bishop(new Position(7, 5), true);
+            grid[7][5].Figure = rightWhiteBishop;
 
-            IFigure WhiteQueen = new Queen(new Position(0, 3), true);
-            grid[0][3].Figure = WhiteQueen;
+            IFigure WhiteQueen = new Queen(new Position(7, 3), true);
+            grid[7][3].Figure = WhiteQueen;
 
-            IFigure WhiteKing = new King(new Position(0, 4), true);
-            grid[0][4].Figure = WhiteKing;
+            IFigure WhiteKing = new King(new Position(7, 4), true);
+            grid[7][4].Figure = WhiteKing;
 
 
-            IFigure leftBlackRook = new Rook(new Position(7, 0), false);
-            grid[7][0].Figure = leftBlackRook;
+            IFigure leftBlackRook = new Rook(new Position(0, 0), false);
+            grid[0][0].Figure = leftBlackRook;
 
-            IFigure rightBlackRook = new Rook(new Position(7, 7), false);
-            grid[7][7].Figure = rightBlackRook;
+            IFigure rightBlackRook = new Rook(new Position(0, 7), false);
+            grid[0][7].Figure = rightBlackRook;
 
-            IFigure leftBlackKnight = new Knight(new Position(7, 1), false);
-            grid[7][1].Figure = leftBlackKnight;
+            IFigure leftBlackKnight = new Knight(new Position(0, 1), false);
+            grid[0][1].Figure = leftBlackKnight;
 
-            IFigure rightBlackKnight = new Knight(new Position(7, 6), false);
-            grid[7][6].Figure = leftBlackKnight;
+            IFigure rightBlackKnight = new Knight(new Position(0, 6), false);
+            grid[0][6].Figure = leftBlackKnight;
 
-            IFigure leftBlackBishop = new Bishop(new Position(7, 2), false);
-            grid[7][2].Figure = leftBlackBishop;
+            IFigure leftBlackBishop = new Bishop(new Position(0, 2), false);
+            grid[0][2].Figure = leftBlackBishop;
 
-            IFigure rightBlackBishop = new Bishop(new Position(7, 5), false);
-            grid[7][5].Figure = rightBlackBishop;
+            IFigure rightBlackBishop = new Bishop(new Position(0, 5), false);
+            grid[0][5].Figure = rightBlackBishop;
 
-            IFigure blackQueen = new Queen(new Position(7, 3), false);
-            grid[7][3].Figure = blackQueen;
+            IFigure blackQueen = new Queen(new Position(0, 3), false);
+            grid[0][3].Figure = blackQueen;
 
-            IFigure blackKing = new King(new Position(7, 4), false);
-            grid[7][4].Figure = blackKing;
+            IFigure blackKing = new King(new Position(0, 4), false);
+            grid[0][4].Figure = blackKing;
 
             IFigure pawn;
 
+            //Black pawns
             for (int i = 0; i < 8; i++)
             {
-                pawn = new Pawn(new Position(1, i), true);
+                pawn = new Pawn(new Position(1, i), false);
                 grid[1][i].Figure = pawn;
             }
 
+            //White pawns
             for (int i = 0; i < 8; i++)
             {
-                pawn = new Pawn(new Position(6, i), false);
+                pawn = new Pawn(new Position(6, i), true);
                 grid[6][i].Figure = pawn;
             }
 
@@ -136,28 +143,44 @@ namespace Chess___Console.Classes
 
         private GridTile[][] grid;
 
+        public IFigure GetFigureOnPosition(Position position)
+        {
+            return grid[position.X][position.Y].Figure;
+        }
+
         public void UpdateFigures()
         {
-
+            for (int i = 0; i < this.grid.Length; i++)
+            {
+                for (int j = 0; j < grid[i].Length; j++)
+                {
+                    if (grid[i][j].Figure != null)
+                    {
+                        grid[i][j].Figure.CalculatePossibleMoves(this);
+                    }
+                    
+                }
+            }
         }
 
         public bool isMovePossible(Move move)
         {
             IFigure figure = grid[move.FromPosition.X][move.FromPosition.Y].Figure;
 
-            if (figure.ContainsPossibleMove(move))
+            if (figure!= null && figure.ContainsPossibleMove(move))
             {
                 return true;
             }
 
             return false;
         }
-
         
-
         public void Draw()
         {
             Console.Clear();
+
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
 
             string emptyTileSymbol = " ";
 
@@ -178,7 +201,18 @@ namespace Chess___Console.Classes
                     }
                     else
                     {
+                        if (grid[i][j].Figure.IsWhite)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Black;
+                        }
+                       
                         Console.Write(" " + grid[i][j].Figure.Symbol + " ");
+
+                        Console.ForegroundColor = ConsoleColor.Black;
                     }
 
                     if (j < 7)
@@ -300,6 +334,8 @@ namespace Chess___Console.Classes
 
         public Move GetMoveFromConsole(bool isWhitesMove)
         {
+            Console.WriteLine("Format: Row,Col");
+            Console.WriteLine("Example: 1,1");
             Console.Write("{0} move from: ", isWhitesMove ? "Whites" : "Blacks");
 
             Move move = new Move();

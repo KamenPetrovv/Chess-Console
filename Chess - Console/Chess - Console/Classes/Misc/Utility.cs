@@ -136,35 +136,35 @@ namespace Chess___Console.Classes.Misc
 
         public static List<Direction> GenerateKingDirections()
         {
-            List<Direction> knightDirections = new List<Direction>();
+            List<Direction> kingDirections = new List<Direction>();
 
             Direction temp;
 
             temp = new Direction(1, 0);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(-1, 0);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(0, 1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(0, -1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(1, 1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(1, -1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(-1, 1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
             temp = new Direction(-1, -1);
-            knightDirections.Add(temp);
+            kingDirections.Add(temp);
 
-            return knightDirections;
+            return kingDirections;
         }
     }
 

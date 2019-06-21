@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Chess___Console.Classes.Misc;
+using System.Linq;
 
 namespace Chess___Console.Classes.Figures
 {
@@ -12,14 +13,21 @@ namespace Chess___Console.Classes.Figures
             : base(position, isWhite)
         {
             //Populate the Default Moves of the Figure
-            DefaultMoves.AddRange(Utility.GenerateKnightDirections());
+            DefaultMoves.AddRange(Utility.GenerateKingDirections());
         }
 
         public override string Symbol { get { return "K"; } }
 
         public override void CalculatePossibleMoves(Board board)
         {
-            throw new NotImplementedException();
+            List<Position> possibleMoves = new List<Position>();
+           
+            //Calculate where the figure can move as if there are no other figures on the board
+            possibleMoves = this.AddDefaultMovesToCurrentPosition();
+
+            //Filter these possible moves accordingly to the other figures
+
+            this.AddPossibleMoves(possibleMoves, board);
         }
     }
 }
